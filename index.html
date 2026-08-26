@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>傘レベル診断 | Umbrella Checker</title>
+    <link rel="stylesheet" href="style.css" />
+    <!-- Font Awesome（アイコン素材用） -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>傘レベル診断</h1>
+        <p>東京23区の時系列天気予報から必要度をチェック</p>
+      </header>
+
+      <main>
+        <!-- エリア選択 -->
+        <section class="area-selector">
+          <label for="city-select">地域を選択：</label>
+          <select id="city-select">
+            <option value="chiyoda">千代田区</option>
+            <option value="shinjuku">新宿区</option>
+            <option value="shibuya">渋谷区</option>
+            <!-- 23区の各エリアを追加予定 -->
+          </select>
+        </section>
+
+        <!-- 傘レベル結果表示エリア -->
+        <section class="result-cards">
+          <!-- 日傘レベル -->
+          <div class="card parasol-card">
+            <h2><i class="fa-solid fa-sun"></i> 日傘レベル</h2>
+            <div class="level-display" id="parasol-level">★ ★ ★ ☆ ☆</div>
+            <p class="message" id="parasol-message">データ取得中...</p>
+          </div>
+
+          <!-- 雨傘レベル -->
+          <div class="card umbrella-card">
+            <h2><i class="fa-solid fa-umbrella"></i> 雨傘レベル</h2>
+            <div class="level-display" id="umbrella-level">★ ★ ★ ☆ ☆</div>
+            <p class="message" id="umbrella-message">データ取得中...</p>
+          </div>
+        </section>
+
+        <!-- 時系列予報表示エリア -->
+        <section class="hourly-forecast">
+          <h3>本日の時系列予報</h3>
+          <div id="forecast-list" class="forecast-list">
+            <!-- JSで動的に追加 -->
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/logic.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
