@@ -138,8 +138,24 @@ async function updateDashboard(cityKey) {
   renderForecastList(extractRemainingTodaySamples(weatherData.hourly), weatherData.cityName);
 }
 
+/**
+ * CITY_COORDINATES から地域ドロップダウンを組み立てる
+ * @param {HTMLSelectElement} select
+ */
+function populateCitySelect(select) {
+  select.replaceChildren();
+
+  Object.entries(CITY_COORDINATES).forEach(([key, city]) => {
+    const option = document.createElement("option");
+    option.value = key;
+    option.textContent = city.name;
+    select.appendChild(option);
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   const citySelect = document.getElementById("city-select");
+  populateCitySelect(citySelect);
 
   citySelect.addEventListener("change", () => {
     updateDashboard(citySelect.value);
